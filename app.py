@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='frontend/pages', static_folder='Assets')
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
@@ -21,11 +23,11 @@ def login():
 
 @app.route('/calculator')
 def calculator():
-    return render_template('calculator.html')
+    return render_template('kalkulator.html')
 
 @app.route('/articles')
 def articles():
-    return render_template('articles.html')
+    return render_template('artikel.html')
 
 @app.route('/add', methods=['POST'])
 def add():
@@ -36,5 +38,5 @@ def add():
     return redirect(url_for('index'))  # Redirect ke homepage setelah menambah item
 
 if __name__ == '__main__':
-    db.create_all()  # Membuat tabel jika belum ada
+    # db.create_all()  # Membuat tabel jika belum ada
     app.run(debug=True)
