@@ -265,7 +265,7 @@ document.addEventListener("click", function (event) {
     <!-- End Navbar -->
 
    <!-- Nutrition Calculator -->
-<div class="bg-gray-100 min-h-[500px] flex justify-center items-center">
+<div class="bg-green-300 min-h-[500px] flex justify-center items-center">
   <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
     <!-- Header Section -->
     <div class="flex items-center mb-4">
@@ -275,9 +275,6 @@ document.addEventListener("click", function (event) {
       <h1 class="text-2xl font-bold ml-4 pl-2.5">Kalkulator Gizi</h1>
     </div>
     <p class="mb-6 text-gray-700">Apakah Nutrisi Harian Anda Telah Tercukupi?</p>
-    <div>
-      <img src="../../Assets/Image/bochi.gif" alt="Doctor Icons">
-    </div>
     
     <!-- Form Section -->
     <div class="space-y-4">
@@ -313,58 +310,73 @@ document.addEventListener("click", function (event) {
 <!-- End Nutrition Calculator -->
 
 
-    <!-- Info -->
-    <div class="bg-blue-100 min-h-screen flex justify-center items-center">
-      <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-        <div class="flex items-center mb-4">
-          <div class="bg-blue-500 rounded-full p-2 mr-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m-4 4V8m0 0l4-4" />
-            </svg>
-          </div>
-          <h1 class="text-2xl font-bold">Kalkulator BMI</h1>
+    <!-- Info or Description-->
+     <div class="flex justify-center my-10">
+       <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl">
+         <div class="mb-6">
+           <div class="flex items-center bg-yellow-100 text-yellow-800 p-4 rounded-lg">
+            <div>
+              <span class="mr-2">⚠️</span>
+            </div>
+            <p>Kalkulator ini bukanlah alat diagnosis medis ataupun pengganti konsultasi dengan dokter spesialis atau nutrisionis. Alat ini dirancang hanya untuk memberikan gambaran awal tentang kecukupan nutrisi harian Anda.</p>
         </div>
-        <div class="space-y-4">
-          <div class="bg-gray-100 rounded-lg p-4">
-            <div class="flex justify-between items-center mb-2">
-              <h2 class="text-lg font-medium">Apa itu BMI (IMT)?</h2>
-              <button class="text-blue-500 focus:outline-none toggle-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-              </button>
-            </div>
-            <div class="toggle-content hidden">
-              <p class="text-gray-700">Kalkulator ini bukaniah sebuah alat diagnosis medis atau pun pengganti konsultasi dokter spesialis/nutrisionis. Alat ini hanya untuk skrining yang bisa Anda lakukan mandiri, sebelum memeriksakkan diri ke dokter. Setelah melihat hasil ini atau membaca artikel lain di Hello Sehat, sebaiknya tetap konsultasi ke dokter agar tahu lebih pasti kondisi kesehatan Anda saat ini. Hasil kalkulator BMI ini tidak bisa digunakan jika Anda memiliki gangguan pola makan.</p>
-            </div>
+      </div>
+      
+      <div class="mb-6">
+        <div class="flex items-center bg-green-100 text-green-800 p-4 rounded-lg">
+          <span class="mr-2">ℹ️</span>
+          <p>Informasi lebih lanjut terkait Gizi dapat dilihat di bawah ini:</p>
+        </div>
+      </div>
+      
+      <!-- FAQ Section -->
+      <div>
+        <div class="border-t">
+          <button onclick="toggleContent(1)" class="flex justify-between w-full py-4 focus:outline-none">
+            <span class="text-lg font-medium">Apa itu BMI (IMT)?</span>
+            <span id="icon-1" class="text-gray-500">+</span>
+          </button>
+          <div id="content-1" class="toggle-content text-gray-600">
+            <p class="pb-4">BMI adalah singkatan dari Body Mass Index, yaitu perhitungan yang digunakan untuk menentukan apakah berat badan seseorang...</p>
           </div>
-          <div class="bg-gray-100 rounded-lg p-4">
-            <div class="flex justify-between items-center mb-2">
-              <h2 class="text-lg font-medium">Bagaimana cara penilaian BMI?</h2>
-              <button class="text-blue-500 focus:outline-none toggle-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-              </button>
-            </div>
-            <div class="toggle-content hidden">
-              <p class="text-gray-700">Informasi tambahan tentang cara penilaian BMI</p>
-            </div>
+        </div>
+        
+        <div class="border-t">
+          <button onclick="toggleContent(2)" class="flex justify-between w-full py-4 focus:outline-none">
+            <span class="text-lg font-medium">Bagaimana cara penilaian BMI?</span>
+            <span id="icon-2" class="text-gray-500">+</span>
+          </button>
+          <div id="content-2" class="toggle-content text-gray-600">
+            <p class="pb-4">Penilaian BMI dilakukan dengan membandingkan berat badan dalam kilogram dengan kuadrat tinggi badan dalam meter...</p>
           </div>
-          <!-- Add similar sections for other information -->
+        </div>
+        
+        <div class="border-t">
+          <button onclick="toggleContent(3)" class="flex justify-between w-full py-4 focus:outline-none">
+            <span class="text-lg font-medium">Mengapa saya harus mengukur BMI?</span>
+            <span id="icon-3" class="text-gray-500">+</span>
+          </button>
+          <div id="content-3" class="toggle-content text-gray-600">
+            <p class="pb-4">Mengukur BMI membantu dalam memantau kesehatan dan mendeteksi risiko obesitas atau kekurangan gizi...</p>
+          </div>
         </div>
       </div>
     </div>
     
     <script>
-      const toggleButtons = document.querySelectorAll('.toggle-btn');
-      toggleButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          btn.classList.toggle('rotate-45');
-          btn.parentElement.nextElementSibling.classList.toggle('hidden');
-        });
-      });
-    </script>
+      function toggleContent(id) {
+        const content = document.getElementById(`content-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+        
+        // Toggle class untuk konten
+        content.classList.toggle("show");
+        
+        // Ubah ikon + menjadi - dan sebaliknya
+        icon.textContent = content.classList.contains("show") ? "-" : "+";
+      }
+      </script>
+      </div>
+    <!-- End Info or Description -->
 
     <!-- Content About Get Start Now -->
   <div class="relative py-16">
