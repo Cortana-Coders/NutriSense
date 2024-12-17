@@ -1,42 +1,45 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-import os
+from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__, template_folder='frontend/pages', static_folder='Assets')
+app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
-
-# Model untuk item
-class Item(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+# Fungsi untuk menghitung rekomendasi gizi
+def calculate_nutrition(data):
+    # Simulasi perhitungan gizi
+    recommended = {
+        "calories": 2000,
+        "protein": 50,
+        "carbs": 300,
+        "fat": 70
+    }
+    return recommended
 
 @app.route('/')
-def index():
-    items = Item.query.all()  # Ambil semua data
-    return render_template('index.html', items=items)
+def home():
+    # Render halaman HTML test.html
+    return render_template('test.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+@app.route('/recommend', methods=['POST'])
+def recommend():
+    # Ambil data dari frontend
+    input_data = request.json
+    if not input_data:
+        return jsonify({"error": "No input data provided"}), 400
+    
+    # Hitung rekomendasi gizi
+    recommendations = calculate_nutrition(input_data)
+    return jsonify(recommendations)
 
-@app.route('/calculator')
-def calculator():
-    return render_template('kalkulator.html')
+@app.route('/')
+def home():
+    return render_template('test.html')  # Halaman utama
 
-@app.route('/articles')
-def articles():
-    return render_template('artikel.html')
+@app.route('/article')
+def article():
+    return render_template('article.html')  # Halaman artikel
 
-@app.route('/add', methods=['POST'])
-def add():
-    name = request.form.get('name')
-    new_item = Item(name=name)
-    db.session.add(new_item)
-    db.session.commit()
-    return redirect(url_for('index'))  # Redirect ke homepage setelah menambah item
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')  # Halaman kontak
 
 if __name__ == '__main__':
-    # db.create_all()  # Membuat tabel jika belum ada
     app.run(debug=True)
